@@ -1,0 +1,126 @@
+.reveal {
+  /* background-color: #ffd541; */
+  font-size: 1rem;
+}
+.backgrounds > div:first-child {
+  background-color: #ffd541;
+}
+.reveal section,
+h1,
+h2,
+ol {
+  text-align: left;
+}
+
+.reveal h2 {
+  font-size: 4rem;
+}
+.reveal h3 {
+  font-size: 2.5rem;
+  text-transform: none;
+}
+
+.reveal .page li i {
+  margin-right: 20px;
+}
+
+.reveal pre {
+  width: 95%;
+  margin: 10px;
+}
+
+.reveal ul {
+  list-style: inherit;
+}
+.reveal .content__list {
+  list-style: none;
+}
+.reveal .content__list > li {
+  font-size: 1.2rem;
+}
+.reveal .content__list li {
+  margin-bottom: 2px;
+  padding: 5px;
+  font-size: 1.2rem;
+  line-height: 1.2rem;
+}
+.reveal li,
+p {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  margin-bottom: 12px;
+}
+
+.events-often ul {
+  list-style: none;
+}
+
+.txt__highlighted {
+  padding: 5px 10px;
+  margin: 10px 0;
+  background-color: rgb(216, 144, 200);
+  border-radius: 8px;
+  line-height: 1rem;
+}
+
+.events--list {
+  display: flex;
+  justify-content: space-between;
+}
+
+.events--list a {
+  font-size: 1rem;
+  line-height: 1rem;
+}
+
+.content li {
+  padding: 15px 0;
+}
+.content li ul {
+  list-style: none;
+  padding-top: 15px;
+  margin: 0;
+}
+
+.reveal .table {
+  width: 100%;
+  border-spacing: 10px;
+  border-collapse: unset;
+}
+.reveal .table td {
+  border: none;
+  list-style: none;
+}
+
+.reveal .long-list li {
+  font-size: 1.2rem;
+}
+
+.reveal .stack p {
+  font-size: 1.15rem;
+}
+
+.page {
+  top: 0;
+  height: 100%;
+}
+
+.reveal .literature {
+  position: absolute;
+  display: block;
+  bottom: 0;
+  border-top: 1px solid #555;
+  font-size: 14px;
+  text-align: left;
+}
+
+.desc {
+  max-width: 500px;
+  padding: 10px;
+  border: 2px dotted rgb(103, 192, 192);
+  border-radius: 10px;
+}
+
+.reveal .page pre {
+  font-size: 1.5rem;
+}

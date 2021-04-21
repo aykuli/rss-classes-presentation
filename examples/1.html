@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script defer src="1.js"></script>
+  <script defer src="alert.js"></script>
+  <script defer src="super.js"></script>
+  <script defer src="static.js"></script>
+  <script defer src="extending.js"></script>
+  <script defer src="whileLabel.js"></script>
+  <script defer src="diff.js"></script>
+  <script defer src="classExpression.js"></script>
+  <script defer src="dinamicClassCreating.js"></script>
+  <script defer src="getAndSet.js"></script>
+  <style>
+    .alert {
+      padding: 20px;
+    }
+
+    .alert-error {
+      background-color: rgba(168, 96, 96, 0.2);
+      border-color: rgba(168, 96, 96, 0.8);
+    }
+
+    .alert-success {
+      background-color: rgba(96, 168, 126, 0.2);
+      border-color: rgba(96, 168, 126, 0.8);
+    }
+
+    #event,
+    #event-super {
+      position: relative;
+    }
+
+    .dot {
+      position: absolute;
+      top: 10px;
+      display: inline-block;
+      width: 50px;
+      height: 10px;
+      background-color: aqua;
+      z-index: -1;
+    }
+
+    .dot-green {
+      background-color: rgb(0, 255, 21);
+    }
+
+    .dot-red {
+      background-color: rgb(255, 72, 0);
+    }
+  </style>
+</head>
+
+<body>
+  <div id='alert'></div>
+  <div id='alert-big'></div>
+  <div id="event"></div>
+  <div id="event-super"></div>
+</body>
+
+</html>

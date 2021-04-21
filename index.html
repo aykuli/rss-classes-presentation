@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Классы / Classes</title>
+  <link rel="stylesheet" href="./reveal/reveal.css" />
+  <link rel="stylesheet" href="./reveal/theme/league.css" />
+  <link rel="stylesheet" href="./reveal/plugin/highlight/zenburn.css" />
+  <link rel="stylesheet" href="./styles.css" />
+  <!-- <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" />
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" /> -->
+</head>
+
+<body>
+  <div class="reveal">
+    <div class="slides slides-ayn">
+      <section style="top: 0; ">
+        <h1 style="font-size: 4rem; color: black; text-shadow: none; font-weight: bold; margin-bottom: 250px;">Классы /
+          Classes</h1>
+        <div
+          style="margin-top: 100px; display: flex; flex-direction: column; flex-grow: 1; align-items: flex-end;color: black;">
+          <span>Айнур Шауэрман</span>
+          <span>Фронтенд разработчик в Storm Labs</span>
+        </div>
+      </section>
+
+      <section class="content">
+        <h2>Содержание:</h2>
+        <ul class="content__list">
+          <li>Принципы ООП.
+            <ul>
+              <li>Инкапсуляция</li>
+              <li>Полиморфизм</li>
+              <li>Наследование</li>
+            </ul>
+
+          </li>
+          <li>Класс. Смысл.</li>
+          <li>Синтаксис
+            <ul>
+              <li>Класс - это функция</li>
+              <li>Prototype. Повторение.</li>
+              <li>Отличие от функции-конструктора</li>
+              <li>Классовое выражение / Class expression</li>
+              <li>Геттеры и сеттеры</li>
+            </ul>
+          </li>
+          <li>Наследование классов
+            <ul>
+              <li>Super</li>
+            </ul>
+          </li>
+          <li>Статические свойства и методы</li>
+          <li>Приватные и защищённые методы и свойства</li>
+          <li>Расширение встроенных классов</li>
+          <li>Проверка класса: "instanceof"</li>
+        </ul>
+      </section>
+
+      <section class="page">
+        <section class="page">
+          <h3>Принципы ООП</h3>
+          <p>Есть 2 способа организации программ:</p>
+          <ol>
+            <li>В основе - код. (Какие действия происходят?). Код изменяет данные.</li>
+            <li>В основе - данные. (Что изменяется в результате действии?). Данные контролируют доступ к коду.</li>
+          </ol>
+          <p>Тип данных точно определяет, какого рода операции к нему можно применять.</p>
+          <p>Для поддержки объектно-ориентированного программирования язык должен обладать тремя свойствами:</p>
+          <ul>
+            <li>Инкапсуляция</li>
+            <li>Полиморфизм</li>
+            <li>Наследование</li>
+          </ul>
+          <ol class="literature">
+            <li>Герберт Шилдт. Полный справочник по С++. Четвертое издание.2011.</li>
+          </ol>
+        </section>
+
+        <section class="page">
+          <h3>Инкапсуляция / Incapsulation</h3>
+          <p> - это механизм, связывающий воедино код и данные, которыми он манипулирует, а также обеспечивающий их от
+            внешнего вмешательства.</p>
+          <p>В ООП код и данные можно положить в "черный ящик", который называется объект.</p>
+          <p>Внутри объекта код и данные могут быть закрытыми (private) и открытыми (public). Закрытый код может быть
+            доступен только из другой части этого же объекта. К закрытой части кода нельзя обратиться извне. Как
+            правило, открытая часть кода обеспечивает управляемый доступ к закрытой части кода.</p>
+          <pre style="font-size: 1.5rem;"><code data-line-numbers="1-10">class B extends Object {
+  #d = 'd';
+
+  get d() {
+    return this.#d;
+  }
+}
+const b = new B();
+</code></pre>
+        </section>
+
+        <section class="page">
+          <h3>Полиморфизм / Polymorphism</h3>
+          <p>Поли= много, морфизм=изменение формы или поведения.</p>
+          <p>Полиморфизм означает способность вызывать один и тот же метод на разных объектах, и каждый объект реагирует
+            по-разному, </p>
+          <pre style="font-size: 1.5rem;"><code data-line-numbers="1-20">const a = [1, 2, 3];
+const c = {
+  a: '1',
+  b: '2',
+};
+
+function ex(arg) {
+  for (x in arg) {
+    console.log(x);
+  }
+}
+
+const msgA = ex(a);
+const msgB = ex(c);
+            </code></pre>
+        </section>
+
+        <section class="page">
+          <h3>Наследование / Inheritance</h3>
+          <p> - это процесс, в ходе которого один объект может приобретать свойства другого.</p>
+        </section>
+      </section>
+
+      <section class="page">
+        <section class="page">
+          <h2>Класс. Смысл.</h2>
+          <p> Концепции двух отдельных сущностей: <span class="txt__highlighted">класс</span> и <span
+              class="txt__highlighted">экземпляр</span>.
+          </p>
+          <ul>
+            <li><span class="txt__highlighted">Класс</span> определяет все свойства (учитывая методы и все поля
+              ), которые характеризуют группу объектов. Класс это абстрактная вещь, а не какой-либо конкретный член
+              множества объектов, которые
+              он описывает. Например, класс Employee может описывать множество всех сотрудников.
+            </li>
+            <li>
+              <span class="txt__highlighted">Экземпляр</span> - это воплощение класса в виде конкретного объекта.
+              Например, Pavel может быть экземпляром класса
+              Employee, представляющий собой конкретного сотрудника. Экземпляр класса имеет ровно столько свойств,
+              сколько и родительский класс.
+            </li>
+          </ul>
+        </section>
+        <section class="page">
+          <p>Вы можете указать специальные
+            методы, называемые конструкторами, которые позволят создать экземпляр класса. Метод конструктор может задать
+            начальные значения для свойств экземпляра и выполнять другие действия, в момент создания. Вы можете
+            использовать оператор new, совместно с методом конструктора, для создания экземпляров классов.</p>
+          <p>JavaScript не имеет определения класса отдельно от конструктора. Вместо этого,
+            вы определяете функцию-конструктор для создания объектов с начальным набором свойств и значений. Вы должны
+            использовать оператор new для создания нового объекта.</p>
+        </section>
+      </section>
+
+      <section class="page">
+        <section class="page">
+          <h2>Синтаксис</h2>
+          <p>Определение класса</p>
+          <pre style="font-size: 1.5rem;"><code data-line-numbers="1-10">class MyClass {
+  // методы класса
+  constructor() { ... }
+  method1() { ... }
+  method2() { ... }
+  method3() { ... }
+  ...
+}</code></pre>
+          <p>Определение экземпляра класса</p>
+
+          <pre><code data-line-numbers="1-30">const instance = new MyClass()</code></pre>
+          <p>Создался новый объект со всеми методами класса.</p>
+          <p>При этом автоматически вызывается метод constructor(), в нём мы можем инициализировать объект.</p>
+        </section>
+
+        <section class="page">
+          <pre style="height: calc(100% - 20px);"><code data-line-numbers="1-30" style="height: 100%;">class WhiteLabel {
+  constructor(initLabel) {
+    this.logoUrl = initLabel.logoUrl;
+    this.companyName = initLabel.companyName;
+    this.certificateUrl = initLabel.certificateUrl;
+    this.contacts = initLabel.contacts;
+  }
+
+  setNewLogo(newLogoUrl) {
+    this.logoUrl = newLogoUrl;
+  }
+
+  getNewWhitelabel() {
+    return this;
+  }
+}
+
+const myCompWhiteLabel = new WhiteLabel({
+  logoUrl: 'http://placephoto.com/64*64',
+  companyName: 'ABCD',
+  certificateUrl: 'https://my.certificate.placement',
+  contacts: 'City: Habarovsk, street Lenina, 25, stage 3',
+});
+
+myCompWhiteLabel.setNewLogo('new url');</code></pre>
+        </section>
+        <section class="page">
+          <ol>Последовательность действии:
+            <li>Определяем класс</li>
+            <li>Определяем экземпляр класса с нужными аргументами</li>
+            <li>В экземпляре используем методы и свойства класса</li>
+          </ol>
+        </section>
+        <section class="page">
+          <h3>Класс - это функция</h3>
+          <pre><code data-line-numbers="1-30">class WhiteLabel {
+  ...
+}
+console.log(typeof WhiteLabel); // function</code></pre>
+          <p>Что происходит:
+          <ul>
+            <li>
+              Создаёт функцию с именем WhiteLabel, которая становится результатом объявления класса. Код функции берётся
+              из метода constructor.
+            </li>
+            <li>Сохраняет все методы, такие как setNewLogo, в WhiteLabel.</li>
+          </ul>
+          </p>
+          <footer>Напомню, что такое prototype</footer>
+        </section>
+        <section class="page">
+          <h3>Prototype</h3>
+          <p>Новые объекты могут быть созданы с помощью функции-конструктора new F().</p>
+
+          <p>Если в F.prototype содержится объект, оператор new устанавливает его в качестве [[Prototype]] для нового
+            объекта.</p>
+          <pre><code data-line-numbers="1-30">const commonItem = {
+  sale: 0,
+  type: 'unsorted',
+};
+
+function SportItem(type) {
+  this.type = type;
+}
+SportItem.prototype = commonItem;
+
+const bycePC = new SportItem('bicycle');
+console.log(bycePC.type);
+console.log(bycePC.sale);</code></pre>
+        </section>
+        <section class="page">
+          <h2>Класс. Отличие от функции-конструктора.</h2>
+          <pre><code data-line-numbers="1-35">function BuildingFunc(type) {
+  this.type = type;
+  this.startBuild = function (resourses) {
+    console.log('Ресурсы в функции: ', resourses);
+    this.useResorces(resourses);
+  };
+  this.useResorces = function (resourses) {
+    console.log(`Использовать ${resourses} для постройки ${this.type}`);
+  };
+}
+
+class BuildingClass {
+  constructor(type) {
+    this.type = type;
+  }
+  startBuild(resourses) {
+    console.log('Ресурсы в классе: ', resourses);
+    this.useResorces(resourses);
+  }
+  useResorces(resourses) {
+    console.log(`Использовать ${resourses} для постройки ${this.type}`);
+  }
+}
+const fb1 = new BuildingFunc('гараж');
+fb1.startBuild('цемент');
+
+const fb2 = new BuildingClass('баня');
+fb2.startBuild('брус');
+
+console.log(BuildingFunc);
+console.log(BuildingClass);</code></pre>
+        </section>
+        <section class="page">
+          <p>1. Движок javascript вопсринимает их по разному</p>
+          <img src="./assets/imgs/class_and_func_diff.png" alt="class_and_func_diff" />
+        </section>
+        <section class="page">
+          <p>2. Функции внутри класса помечены как методы</p>
+          <img src="./assets/imgs/class_and_func_diff1.png" alt="class_and_func_diff" />
+        </section>
+        <section class="page">
+          <p>3. Методы класса являются неперечислимыми.</p>
+          <img src="./assets/imgs/class_and_func_diff1.png" alt="class_and_func_diff" style="max-height: 250px;" />
+          <pre><code data-line-numbers="1-30">for (val in fb1) {
+  console.log('1: ', val);
+}
+// 1:  type 
+// 1:  startBuild 
+// 1:  useResorces
+
+for (val in fb2) {
+  console.log('2: ', val);
+}
+// 2:  type</code></pre>
+        </section>
+        <section class="page">
+          <p>4. Классы всегда используют use strict. Весь код внутри класса автоматически находится в строгом режиме.
+          </p>
+        </section>
+      </section>
+
+      <section class="page">
+        <section class="page">
+          <h2>Классовое выражение / Class expression</h2>
+          <pre><code data-line-numbers="1-50">const Widget = class {
+  constructor(type) {
+    this.isLoading = false;
+    this.type = type;
+    this.data = null;
+  }
+
+  async fetchData() {
+    this.isLoading = true;
+    try {
+      const url = `https://jsonplaceholder.typicode.com/${this.type}`;
+      const response = await fetch(url);
+      const json = await response.json();
+      this.data = json;
+    } catch (e) {
+      console.error(e);
+    } finally {
+      this.isLoading = false;
+    }
+  }
+
+  getData() {
+    return this.isLoading ? `${this.type} is still loading` : this.data;
+  }
+};
+
+const widgetUsers = new Widget('users');        
+widgetUsers.fetchData();
+setTimeout(() => {
+  console.log(widgetUsers.getData());
+}, 1000);</code></pre>
+        </section>
+        <section class="page">
+          <pre><code data-line-numbers="1-100">const Widget = class DashboardWidget {
+};
+console.log(Widget); // [class DashboardWidget]
+console.log(DashboardWidget); // ReferenceError: DashboardWidget is not defined
+</code></pre>
+        </section>
+        <section class="page">
+          <p>Динамическое создание класса</p>
+          <pre style="height: calc(100% - 1500px);"><code data-line-numbers="1-30">function makeClass(type) {
+  switch (type) {
+    case 'pen':
+      return class Pen {
+        constructor(articul, color) {
+          this.articul = articul;
+          this.color = color;
+        }
+      };
+    case 'notebook':
+      return class Notebook {
+        constructor(articul, pageNumber, print) {
+          this.articul = articul;
+          this.pageNumber = pageNumber;
+          this.print = print;
+        }
+      };
+    case 'album':
+      return class Album {
+        constructor(articul, pageNumber, size) {
+          this.articul = articul;
+          this.pageNumber = pageNumber;
+          this.size = size;
+        }
+      };
+  }
+}
+
+const PenCommon = makeClass('pen');
+const NotebookCommon = makeClass('notebook');
+const AlbumForDraw = makeClass('album');
+
+const pen0 = new PenCommon('111111', 'red');
+const pen1 = new PenCommon('111112', 'red');
+const notebook0 = new NotebookCommon('222222', 24, 'animal');
+const notebook1 = new NotebookCommon('222222', 24, 'animal');
+const album0 = new AlbumForDraw('3333333', 40, 'a4');
+</code></pre>
+        </section>
+      </section>
+
+      <section class="page">
+        <section class="page">
+          <h2>Геттеры и сеттеры</h2>
+          <pre><code data-line-numbers="1-100">class WashingMachine {
+  constructor(name, type) {
+    this._name = name;
+    this._type = type;
+  }
+  get name() {
+    return this._name;
+  }
+
+  set name(newName) {
+    const { isValid, msg } = this.checkName(newName);
+    if (!isValid) {
+      return msg;
+    }
+    this._name = newName;
+  }
+
+  get type() {
+    return this._type;
+  }
+
+  set type(newType) {
+    this._type = newType;
+  }
+
+  checkName(value) {
+    const len = value.length;
+    if (len < 4) {
+      return { isValid: false, msg: 'Короткое имя' };
+    }
+    const isContainIncorrectSymbol = value.includes('~');
+    if (isContainIncorrectSymbol) {
+      return { isValid: false, msg: 'Имя не может содержать невалидный символ ~' };
+    }
+    return { isValid: true, msg: '' };
+  }
+}
+
+const mach0 = new WashingMachine('name0', 'disches', 'AAA');
+mach0.name = 'newName0';
+mach0.type = 'clothes';
+</code></pre>
+        </section>
+        <section class="page">
+          <p>Методы, геттеры и сеттеры записываются в WashingMachine.prototype.</p>
+          <pre><code data-line-numbers="1-100">console.log(WashingMachine);</code></pre>
+          <img src="./assets/imgs/set-get-in-prototype.png" alt="set get" />
+
+        </section>
+      </section>
+
+      <section class="page">
+        <section class="page">
+          <h2>Наследование классов</h2>
+          <p>Используем ключевое слово <span class="txt__highlighted">extends</span>.</p>
+          <pre><code data-line-numbers="1-100">class Alert {
+  constructor(type, title, msg) {
+    this.type = type;
+    this.title = title;
+    this.msg = msg;
+    this._isBtnExists = false;
+  }
+  addCloseBtn() {
+    this._isBtnExists = true;
+  }
+
+  getHTML() {
+    return `
+      <div class="alert ${this.type === 'success' ? 'alert-success' : 'alert-error'}">
+      <h4>${this.title}</h4>
+      <p>${this.msg}</p>
+      ${this._isBtnExists ? '<button>Submit</button>' : ''}
+      </div>`;
+  }
+}
+
+class AlertWitOpener extends Alert {
+  getHTML() {
+    return `
+    <details  class="alert ${this.type === 'success' ? 'alert-success' : 'alert-error'}">
+    <summary>${this.title}</summary>
+    ${this.msg}
+    ${this._isBtnExists ? '<button>Submit</button>' : ''}
+  </details>
+  `;
+  }
+}
+          </code></pre>
+        </section>
+        <section class="page">
+          <h2>Super</h2>
+          <p>Можно переопределить методы с помощью этого ключевого слова.</p>
+          <ul>
+            <li><span class="txt__highlighted">super.method(...)</span> вызывает родительский метод.</li>
+            <li><span class="txt__highlighted">super(...)</span> вызывает родительский конструктор (работает только
+              внутри нашего конструктора).</li>
+          </ul>
+          <p>В наследующем классе соответствующая функция-конструктор помечена специальным внутренним свойством
+            [[ConstructorKind]]:"derived".</p>
+          <p>Когда выполняется обычный конструктор, он создаёт пустой объект и присваивает его this .</p>
+          <p>Когда запускается конструктор унаследованного класса, он этого не делает. Вместо этого он ждёт, что это
+            сделает конструктор родительского класса.
+          </p>
+        </section>
+        <section class="page">
+          <pre style="min-height: 100%;"><code data-line-numbers="1-100" >class Event {
+  constructor(title, description, color, date) {
+    this.title = title;
+    this.description = description;
+    this.color = color;
+    this.date = date;
+  }
+
+  getRenderBody() {
+    return `
+      <h4>${this.title}</h4>
+      <p>${this.description}</p>
+      <p class="date">${this.date}</p>
+      `;
+  }
+
+  getMarker() {
+    return `
+      <span class="dot dot-${this.color}"></span>
+      `;
+  }
+
+  getRenderComponent() {
+    return `${this.getMarker()}${this.getRenderBody()}`;
+  }
+}
+
+class EventWithAuthor extends Event {
+  constructor(title, description, color, date, author) {
+    super(title, description, color, date);
+    this.author = author;
+  }
+  getRenderComponent() {
+    return `${super.getRenderComponent()}
+      <p>Author: ${this.author}</p>
+      `;
+  }
+}
+        </code></pre>
+          <p>У функций-стрелок нет своего this и super, поэтому они «прозрачно» встраиваются во внешний контекст.</p>
+        </section>
+      </section>
+
+      <section class="page">
+        <section class="page">
+          <h2>Статические свойства и методы</h2>
+          <p><span class="txt__highlighted">Статический метод</span> - метод, присовенный самому классу</p>
+          <pre style="min-height: 100%;"><code data-line-numbers="1-100">class Song {
+  constructor(name, author, genre) {
+    this.name = name;
+    this.state = 'stopped';
+  }
+  static startPlay() {
+    this.state = 'play';
+    console.log('Song started to play');
+  }
+  getFav() {
+    return this.favorite;
+  }
+  static addToFav = function (song, favs) {
+    favs.push(song);
+    return favs;
+  };
+}
+
+Song.addToFavAuthor = function (author, favAuths) {
+  favAuths.push(author);
+  return favAuths;
+}; </code></pre>
+        </section>
+
+        <section class="page">
+          <p><span class="txt__highlighted">Статическое свойство</span> - свойство самого класса</p>
+          <pre style="min-height: 100%;"><code data-line-numbers="1-100">class PopSong {
+  static genre = 'pop';
+}
+console.log(PopSong.genre);
+</code></pre>
+        </section>
+        <section class="page">
+          <p>Статические свойства и методы также наследуемы.</p>
+          <pre style="min-height: 100%;"><code data-line-numbers="1-100">class PopSong extends Song {
+  static genre = 'pop';
+}
+
+const popFavs = [];
+PopSong.addToFav('pop0', popFavs);
+console.log('popFavs: ', popFavs);
+</code></pre>
+        </section>
+      </section>
+      <section class="page">
+        <section class="page">
+          <h2>Приватные и защищённые методы и свойства</h2>
+          <p>Два типа полей (свойств и методов) объекта:</p>
+          <ul>
+            <li><span class="txt__highlighted">Публичные</span>: доступны отовсюду. Они составляют внешний интерфейс. До
+              этого момента мы использовали только публичные свойства и методы.
+            </li>
+            <li><span class="txt__highlighted">Приватные</span>: доступны только внутри класса. Они для внутреннего
+              интерфейса.
+            </li>
+          </ul>
+          <p>Приватные поля не вычисляемые.</p>
+        </section>
+        <section class="page">
+          <pre style="min-height: 100%;"><code data-line-numbers="1-100">class Relations {
+  #lubimaya = 'Luba';
+  getNewLoveName() {
+    return this.#lubimaya;
+  }
+  #changeLove(name) {
+    this.#lubimaya = name;
+  }
+  setnewLove(newName) {
+    this.#changeLove(newName);
+    return this.#lubimaya;
+  }
+}
+
+const myRelations = new Relations();
+
+console.log(myRelations.getNewLoveName());
+myRelations.setnewLove('Olya');
+console.log(myRelations.getNewLoveName());
+        </code></pre>
+        </section>
+      </section>
+
+      <section class="page">
+        <section class="page">
+          <h2>Расширение встроенных классов</h2>
+          <p>Встроенные классы - это <span class="txt__highlighted">String</span>,<span
+              class="txt__highlighted">Array</span>,<span class="txt__highlighted">Map</span></p>
+          <pre style="min-height: 100%;"><code data-line-numbers="1-100">class String4 extends String {
+  repeatFourTimes(string) {
+    return string.repeat(4);
+  }
+}
+
+const repeet4string = new String4();
+console.log(repeet4string.repeatFourTimes('12'));
+        </code></pre>
+          <pre style="min-height: 100%;"><code data-line-numbers="1-100">Map.prototype.concatKey = function () {
+  let res = '';
+  for ([key, val] of this) {
+    res += key;
+  }
+  return res;
+};
+const map0 = new Map();
+map0.set('00', 11); // Map(1) { '00' => 11 }
+map0.set('11', 22); // Map(2) { '00' => 11, '11' => 22 }
+map0.concatKey(); // 0011
+      </code></pre>
+        </section>
+        <section class="page">
+          <h2>Cтатические методы не наследуются от встроенных классов</h2>
+          <p>Например, такие статические методы, как Object.keys, Array.isArray и т. д.</p>
+        </section>
+      </section>
+
+      <section class="page">
+        <h2>Проверка класса: "instanceof"</h2>
+        <p>Оператор <span class="txt__highlighted">instanceof</span> позволяет проверить, к какому классу принадлежит
+          объект, с учётом наследования.</p>
+        <pre style="min-height: 100%;"><code data-line-numbers="1-100">class Device {}
+let dev = new Device();
+console.log( dev instanceof Device ); // true
+</code></pre>
+        <p>Проверяется, равен ли Class.prototype одному из прототипов в прототипной цепочке obj.</p>
+      </section>
+
+      <section class="page">
+        <p>На сегодня все. Я старалась вам в пользу.</p>
+      </section>
+    </div>
+  </div>
+  <script src="./reveal/reveal.js"></script>
+  <script src="./reveal/plugin/markdown/markdown.js"></script>
+  <script src="./reveal/plugin/highlight/highlight.js"></script>
+  <script>
+    Reveal.initialize({ plugins: [RevealMarkdown, RevealHighlight], slideNumber: 'c/t', autoPlayMedia: true });
+  </script>
+</body>
+
+</html>
