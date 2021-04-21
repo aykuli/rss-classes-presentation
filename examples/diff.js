@@ -12,8 +12,9 @@ function BuildingFunc(type) {
 }
 
 class BuildingClass {
-  constructor(type) {
+  constructor(type, a) {
     this.type = type;
+    this.a = a;
   }
 
   startBuild(resourses) {
@@ -26,19 +27,21 @@ class BuildingClass {
   }
 }
 
-const fb1 = new BuildingFunc('гараж');
-fb1.startBuild('цемент');
+const garage = new BuildingFunc('гараж');
+garage.startBuild('цемент');
 
-const fb2 = new BuildingClass('баня');
-fb2.startBuild('брус');
+const banya = new BuildingClass('баня', '0');
+banya.startBuild('брус');
 
 // console.log('BuildingFunc: ', BuildingFunc);
 // console.log('BuildingClass: ', BuildingClass);
+// console.log('garage: ', garage);
+// console.log('banya: ', banya);
 
-for (val in fb1) {
+for (val in garage) {
   // console.log('1: ', val);
 }
 
-for (val in fb2) {
+for (val in banya) {
   // console.log('2: ', val);
 }

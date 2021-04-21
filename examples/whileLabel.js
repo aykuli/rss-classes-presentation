@@ -21,3 +21,24 @@ const myCompWhiteLabel = new WhiteLabel({
   certificateUrl: 'https://my.certificate.placement',
   contacts: 'City: Habarovsk, street Lenina, 25, stage 3',
 });
+
+// console.log(WhiteLabel);
+// console.log(myCompWhiteLabel);
+
+const commonItem = {
+  sale: 0,
+  type: 'unsorted',
+};
+
+function SportItem(type) {
+  if (type) {
+    this.type = type;
+  }
+}
+
+SportItem.prototype = commonItem;
+
+const bycePC = new SportItem('bycicle');
+
+// console.log(bycePC.type);
+// console.log(bycePC.sale);

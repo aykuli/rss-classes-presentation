@@ -62,23 +62,16 @@
       </section>
 
       <section class="page">
-        <section class="page">
+        <section class="page big-font-in-page">
           <h3>Принципы ООП</h3>
-          <p>Есть 2 способа организации программ:</p>
-          <ol>
-            <li>В основе - код. (Какие действия происходят?). Код изменяет данные.</li>
-            <li>В основе - данные. (Что изменяется в результате действии?). Данные контролируют доступ к коду.</li>
-          </ol>
-          <p>Тип данных точно определяет, какого рода операции к нему можно применять.</p>
+          <p>Определение из Википедии:</p>
+          <p>Объе́ктно-ориенти́рованное программи́рование (ООП) — методология программирования, основанная на представлении программы в виде совокупности объектов, каждый из которых является экземпляром определённого класса, а классы образуют иерархию наследования.</p>
           <p>Для поддержки объектно-ориентированного программирования язык должен обладать тремя свойствами:</p>
           <ul>
             <li>Инкапсуляция</li>
             <li>Полиморфизм</li>
             <li>Наследование</li>
           </ul>
-          <ol class="literature">
-            <li>Герберт Шилдт. Полный справочник по С++. Четвертое издание.2011.</li>
-          </ol>
         </section>
 
         <section class="page">
@@ -147,16 +140,7 @@ const msgB = ex(c);
               сколько и родительский класс.
             </li>
           </ul>
-        </section>
-        <section class="page">
-          <p>Вы можете указать специальные
-            методы, называемые конструкторами, которые позволят создать экземпляр класса. Метод конструктор может задать
-            начальные значения для свойств экземпляра и выполнять другие действия, в момент создания. Вы можете
-            использовать оператор new, совместно с методом конструктора, для создания экземпляров классов.</p>
-          <p>JavaScript не имеет определения класса отдельно от конструктора. Вместо этого,
-            вы определяете функцию-конструктор для создания объектов с начальным набором свойств и значений. Вы должны
-            использовать оператор new для создания нового объекта.</p>
-        </section>
+        </section>       
       </section>
 
       <section class="page">
@@ -176,6 +160,15 @@ const msgB = ex(c);
           <pre><code data-line-numbers="1-30">const instance = new MyClass()</code></pre>
           <p>Создался новый объект со всеми методами класса.</p>
           <p>При этом автоматически вызывается метод constructor(), в нём мы можем инициализировать объект.</p>
+        </section>
+        <section class="page">
+          <p>Вы можете указать специальные
+            методы, называемые конструкторами, которые позволят создать экземпляр класса. Метод конструктор может задать
+            начальные значения для свойств экземпляра и выполнять другие действия, в момент создания. Вы можете
+            использовать оператор new, совместно с методом конструктора, для создания экземпляров классов.</p>
+          <p>JavaScript не имеет определения класса отдельно от конструктора. Вместо этого,
+            вы определяете функцию-конструктор для создания объектов с начальным набором свойств и значений. Вы должны
+            использовать оператор new для создания нового объекта.</p>
         </section>
 
         <section class="page">
@@ -245,9 +238,7 @@ function SportItem(type) {
 }
 SportItem.prototype = commonItem;
 
-const bycePC = new SportItem('bicycle');
-console.log(bycePC.type);
-console.log(bycePC.sale);</code></pre>
+const bycePC = new SportItem('bicycle');</code></pre>
         </section>
         <section class="page">
           <h2>Класс. Отличие от функции-конструктора.</h2>
@@ -278,10 +269,7 @@ const fb1 = new BuildingFunc('гараж');
 fb1.startBuild('цемент');
 
 const fb2 = new BuildingClass('баня');
-fb2.startBuild('брус');
-
-console.log(BuildingFunc);
-console.log(BuildingClass);</code></pre>
+fb2.startBuild('брус');;</code></pre>
         </section>
         <section class="page">
           <p>1. Движок javascript вопсринимает их по разному</p>
@@ -578,7 +566,7 @@ Song.addToFavAuthor = function (author, favAuths) {
 
         <section class="page">
           <p><span class="txt__highlighted">Статическое свойство</span> - свойство самого класса</p>
-          <pre style="min-height: 100%;"><code data-line-numbers="1-100">class PopSong {
+          <pre><code data-line-numbers="1-100">class PopSong {
   static genre = 'pop';
 }
 console.log(PopSong.genre);
@@ -586,7 +574,7 @@ console.log(PopSong.genre);
         </section>
         <section class="page">
           <p>Статические свойства и методы также наследуемы.</p>
-          <pre style="min-height: 100%;"><code data-line-numbers="1-100">class PopSong extends Song {
+          <pre><code data-line-numbers="1-100">class PopSong extends Song {
   static genre = 'pop';
 }
 
@@ -671,7 +659,7 @@ map0.concatKey(); // 0011
         <h2>Проверка класса: "instanceof"</h2>
         <p>Оператор <span class="txt__highlighted">instanceof</span> позволяет проверить, к какому классу принадлежит
           объект, с учётом наследования.</p>
-        <pre style="min-height: 100%;"><code data-line-numbers="1-100">class Device {}
+        <pre><code data-line-numbers="1-100">class Device {}
 let dev = new Device();
 console.log( dev instanceof Device ); // true
 </code></pre>

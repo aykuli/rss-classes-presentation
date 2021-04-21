@@ -28,5 +28,5 @@ const Widget = class {
 const widgetUsers = new Widget('users');
 widgetUsers.fetchData();
 setTimeout(() => {
-  // console.log(widgetUsers.getData());
+  console.log(widgetUsers.getData());
 }, 1000);

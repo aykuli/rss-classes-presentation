@@ -124,3 +124,10 @@ p {
 .reveal .page pre {
   font-size: 1.5rem;
 }
+
+.reveal .big-font-in-page p {
+  font-size: 2rem;
+}
+.reveal .big-font-in-page ul > li {
+  font-size: 2rem;
+}
